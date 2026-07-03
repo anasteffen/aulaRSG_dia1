@@ -1,0 +1,3 @@
+This is a simple text file.
+It is not in FASTA format.
+It should be rejected by the CLI or cause an error depending on validation.

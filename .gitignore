@@ -3,12 +3,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
-
-# Ambientes virtuais
 .venv/
+env/
 venv/
 ENV/
 
-# Resultados de execuções locais de bioinformática
+# R
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Output FASTA files
+*.fasta.out
 filtradas.fasta
-*.log
+filtradas.R.fasta

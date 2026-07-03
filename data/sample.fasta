@@ -1,0 +1,10 @@
+>seq1 Human insulin gene transcript
+AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC
+TTCTGAACTGGTTACCTGCCGTGAGTAAATTAAA
+>seq2 Drosophila melanogaster alcohol dehydrogenase
+atgtcacttacgaccagtaataagaacgtttttgaatttgcccgccaagagatact
+tcgcgaccgtttccgtctggtcgaa
+>seq3 Short sequence for filter
+ATGC
+>seq4 High GC sequence
+GCGCGGCCGCTCGCGCGC

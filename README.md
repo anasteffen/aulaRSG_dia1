@@ -1,27 +1,85 @@
-# curso-dia1-git — Exercícios de Git
+# Exercícios Dia 1 - Ferramenta de Manipulação de FASTA (`fastatool`)
 
-Repositório contendo o pipeline fictício de filtragem de sequências e os exercícios práticos do **Dia 1** do curso *Atuando na Indústria: Fundamentos de Engenharia de Software e DevOps para Bioinformatas*.
+Este repositório contém a atividade prática do **Dia 1** do curso de **Engenharia de Software e DevOps para Bioinformática**.
+
+Aqui, você desenvolverá uma ferramenta de linha de comando (`fastatool`) para parsing, estatística, filtragem e transformação de sequências biológicas no formato FASTA.
+
+Você pode optar por realizar os exercícios em **Python** ou em **R**.
+
+---
 
 ## Estrutura do Repositório
-* `filtro.py`: Script Python para filtragem de sequências FASTA.
-* `config.yaml`: Arquivo de configuração de parâmetros.
-* `README.md`: Este arquivo com as instruções.
 
-## Exercícios Práticos
+```
+/
+├── data/
+│   ├── sample.fasta           # Arquivo FASTA de teste válido (multi-linha)
+│   ├── sample.txt             # Arquivo comum que deve ser rejeitado
+│   └── sample_broken.fasta    # Arquivo FASTA com formatação quebrada
+└── exercises/
+    ├── python/
+    │   ├── fastatool.py       # Esqueleto do script (Python)
+    │   ├── test_fastatool.py  # Arquivo de testes unitários (pytest)
+    │   └── requirements.txt   # Dependências do Python
+    └── r/
+        ├── fastatool.R        # Esqueleto do script (R)
+        └── test_fastatool.R   # Arquivo de testes unitários (testthat)
+```
 
-### Exercício 2: Faded Example — Fluxo Git Completo
-Siga as instruções descritas no seu documento de exercícios para:
-1. Criar e acessar a branch `feat/filtro-qualidade`.
-2. Editar `filtro.py` adicionando um comentário de autoria.
-3. Adicionar, commitar e enviar para o repositório remoto.
-4. Abrir um Pull Request.
+---
 
-### Exercício 3: Resolução de Conflito de Merge
-Você irá resolver um conflito de merge entre duas branches paralelas:
-1. Mude para a branch `feat/parametros-a`.
-2. Tente mesclar a branch `feat/parametros-b` nela:
+## Como Começar
+
+### Opção 1: Python
+
+1. **Configurar Ambiente Virtual (Recomendado):**
    ```bash
-   git merge feat/parametros-b
+   cd exercises/python/
+   python3 -m venv .venv
+   source .venv/bin/activate  # No Windows use: .venv\Scripts\activate
    ```
-3. Abra `config.yaml` no VS Code, identifique o conflito e resolva-o mantendo o valor de `min_quality: 30`.
-4. Finalize o commit do merge.
+
+2. **Instalar Dependências:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Executar os Testes (TDD):**
+   ```bash
+   pytest test_fastatool.py
+   ```
+   *De início, os testes devem falhar (Red). Seu objetivo é escrever o código em `fastatool.py` para fazê-los passar (Green).*
+
+---
+
+### Opção 2: R
+
+1. **Configurar Dependências:**
+   Abra o R ou RStudio e instale o pacote `testthat`:
+   ```R
+   install.packages("testthat")
+   ```
+
+2. **Executar os Testes (TDD):**
+   No terminal (dentro de `exercises/r/`):
+   ```bash
+   Rscript -e "testthat::test_file('test_fastatool.R')"
+   ```
+   *De início, os testes devem falhar (Red). Seu objetivo é escrever o código em `fastatool.R` para fazê-los passar (Green).*
+
+---
+
+## Progresso de Aprendizado (TDD Híbrido)
+
+A atividade é dividida em 5 exercícios sequenciais:
+
+1. **Exercício 1: Leitura de FASTA (`read_fasta`)**
+   - **TDD:** Testes fornecidos na íntegra. Apenas desenvolva a lógica do parser multi-linha até que todos os testes passem.
+2. **Exercício 2: Estatísticas de GC (`calc_gc`)**
+   - **TDD:** Testes parciais. Complete a lacuna nos testes fornecidos primeiro, depois desenvolva a lógica.
+3. **Exercício 3: Filtro de Sequências (`filter_fasta`)**
+   - **TDD:** Testes parciais. Escreva um novo caso de teste cobrindo a filtragem múltipla por GC e tamanho, depois implemente a lógica.
+4. **Exercício 4: Reverso Complementar (`reverse_complement`)**
+   - **TDD:** Testes parciais. Adicione o teste que valida a preservação de letras maiúsculas/minúsculas, depois implemente.
+5. **Exercício 5: Gravação e Interface CLI (`write_fasta` + `main`)**
+   - **TDD:** Sem testes fornecidos! Projete e escreva seus próprios testes de integração para validar a CLI do terminal ponta a ponta e implemente a interface da ferramenta.
